@@ -1,0 +1,70 @@
+/*body {
+  background-color:rgba(0,50,150,0.5);
+  background-image:url("Naruto1.png");
+  background-repeat:no-repeat;
+  background-attachment:;
+  background-position:top right;
+  margin-right:680px;
+  margin-top:660px;
+  background-size:1000px 650px;
+}*/
+body{
+background-color:skyblue;
+}
+h1 {
+  color: darkblue;
+  text-align: center;
+  background-color: yellow;
+  border-radius: 25px;
+  }
+#h1{
+color: red;
+}
+#h2{
+color: green;
+}
+p {
+text-align: center;
+}
+h3 {
+font-size:35px;
+}
+span {
+font-size:50px;
+}
+#submit {
+font-size:40px;
+margin-left: 430px;
+margin-right:430px;
+border-radius:10px;
+color: green;
+background-color: #b3b3ff;
+padding: 15px;
+}
+img {
+padding: 30px;
+width:350px;
+height:500px;
+display:block;
+margin-left:auto;
+margin-right:auto;
+}
+hr { 
+border:solid #ff3300;
+}
+video {
+ margin-left:150px;
+ margin-right:150px;
+ }
+ h3 {
+ background-color:yellow;
+ padding: 25px 25px 25px 70px;
+ height:60px;
+ width:700px;
+ border-radius:25px;
+ margin-left:100px;
+ }
+ #love {
+ margin-left:315px;
+ color:green;
+ }
