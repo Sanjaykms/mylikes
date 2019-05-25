@@ -9,7 +9,7 @@
   background-size:1000px 650px;
 }*/
 body{
-background-color:skyblue;
+background-color:;
 }
 h1 {
   color: darkblue;
@@ -19,6 +19,7 @@ h1 {
   }
 #h1{
 color: red;
+text-shadow:3px 2px green;
 }
 #h2{
 color: green;
@@ -67,4 +68,8 @@ video {
  #love {
  margin-left:315px;
  color:green;
+ }
+ html { 
+background: url("Naruto3.gif") no-repeat center center fixed;
+ background-size: cover;
  }
