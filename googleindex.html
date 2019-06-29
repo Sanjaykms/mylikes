@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
     <head>
+   <link href="https://fonts.googleapis.com/css?family=Montserrat|Open+Sans+Condensed:300&display=swap" rel="stylesheet">
+   <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
         <meta name="viewport" content="width=divice-width, initial-scale=1.0">
         <style>
       img{
@@ -11,7 +13,7 @@
        display:block;
       }
       #search{
-       padding:7px;
+       padding:12px;
        width:567px;
        border-radius:40px;
        margin-top:28px;
@@ -20,14 +22,44 @@
        resize:none;
           outline-style: none;
           overflow: hidden;
-          text-align: center;
+      border-width:0.5px 2px 1px 1px;
+      border-color:#e3e5e6;
       }
-       
-          
+     p#p1{
+      overflow:auto;
+      display:block;
+      margin-left:530px;
+     clear:both;
+      float:left;
+       }
+      #p1:after {
+      content: "";
+     display: table;
+    clear: both;
+     }
+     p#p2{
+      overflow:auto;
+      display:block;
+      margin-left:680px;
+      width:95px;
+       }
+       p{
+        color:grey;
+        background-color:#f2f2f2;
+        padding:9px;
+       font-size:17px;
+       font-family: 'Montserrat', sans-serif;
+font-family: 'Open Sans Condensed', sans-serif;
+       }
+    p:hover{
+       border:0.5px solid #cccccc;
+       border-radius:3px;
+       font-color:black;
+      }
             #search:hover{
-                box-shadow:1px 1px 1px 1px grey;
+                box-shadow:0 0 2px 1.5px #dcdee0;
             }
-            @media screen and (max-width: 100px) {
+            @media screen and (max-width: 580px) {
   .left, .main, .right {
     width: 100%;
                 }
@@ -36,8 +68,8 @@
     <body>
         <img src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png" id="goo">
                                                                                                           
-        <div><textarea id="search"></textarea></div>    
-
+        <div><input type="search" title="Search" id="search"></input></div> 
+        <p id="p1">Google Search</p>
+        <p id="p2" style="z-index:-1">I'm Feeling Lucky</p>   
     </body>
-
 </html>
