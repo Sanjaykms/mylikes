@@ -13,7 +13,7 @@
        display:block;
       }
       #search{
-       padding:12px;
+       padding:13px;
        width:567px;
        border-radius:40px;
        margin-top:28px;
@@ -23,7 +23,8 @@
           outline-style: none;
           overflow: hidden;
       border-width:0.5px 2px 1px 1px;
-      border-color:#e3e5e6;
+      border-top-color:#ebeced;
+          border-color:#e3e5e9;
       }
      p#p1{
       overflow:auto;
@@ -31,6 +32,7 @@
       margin-left:530px;
      clear:both;
       float:left;
+
        }
       #p1:after {
       content: "";
@@ -43,33 +45,88 @@
       margin-left:680px;
       width:95px;
        }
-       p{
+       .cs{
         color:grey;
         background-color:#f2f2f2;
         padding:9px;
        font-size:17px;
        font-family: 'Montserrat', sans-serif;
 font-family: 'Open Sans Condensed', sans-serif;
+                    border-radius: 3px;
        }
-    p:hover{
+    .cs:hover{
        border:0.5px solid #cccccc;
        border-radius:3px;
-       font-color:black;
+       color:black;
       }
             #search:hover{
-                box-shadow:0 0 2px 1.5px #dcdee0;
+                box-shadow:0 0 2px 1.2px #d1d1d1;
             }
-            @media screen and (max-width: 580px) {
+            @media screen and (max-width: 80px) {
   .left, .main, .right {
     width: 100%;
                 }
+            }
+            div.goo{
+                color:#565657;
+                margin-left: 420px;
+                margin-top: 30px;
+                word-spacing: 0px;  
+                font-size: 14px;
+            }
+            a{
+                padding-left: 4px;
+                text-decoration: none;
+            }
+            a:hover{
+                text-decoration: underline;
+            }
+            bold{
+                color: black;
+            
+            }
+          #click{
+              position: absolute;
+              top: 128px;
+              left: 385px;
+                width:25px;
+                height: 25px;
+            }
+           img[title]:hover:after {
+               color: blue;
+            }
+          #o{
+                margin-top: 97px;
+                color:#f2f3f5;
+                opacity:0.3;
+            }
+            #r{
+                 margin-top: 35px;
+                color:#f2f3f5;
+                opacity:0.3;
+            }
+            
         </style>
     </head>
     <body>
         <img src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png" id="goo">
-                                                                                                          
-        <div><input type="search" title="Search" id="search"></input></div> 
-        <p id="p1">Google Search</p>
-        <p id="p2" style="z-index:-1">I'm Feeling Lucky</p>   
+         <form>                                                                                                 
+        <div><input type="search" title="Search" id="search">
+             <img src="http://newsbytes.ph/wp-content/uploads/2016/06/microphone-icon.jpg" id="click" title="Search by voice">
+             </div></form>
+        <p id="p1" class="cs">Google Search</p>
+        <p id="p2" class="cs">I'm Feeling Lucky</p>
+        <div class="goo"><bold>Google offered in:</bold><a href="">हिंदी</a>
+            <a href="">বাঙালি</a>
+            <a href="">বাঙালি</a>
+            <a href="">తెలుగు</a>
+            <a href="">বাঙালি</a>
+            <a href="">தமிழ்</a>
+            <a href="">বাঙালি</a>
+            <a href="">മലയാളം</a>
+            <a href="">ਪੰਜਾਬੀ</a>
+        </div>
+        <hr id="o">
+        <hr id="r">
     </body>
 </html>
