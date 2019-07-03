@@ -7,7 +7,7 @@
         <style>
       img{
        margin-left: 539px;
-       margin-top: 199px;
+       margin-top: 200px;
        heigth:172px;
        width:273px;
        display:block;
@@ -29,7 +29,7 @@
      #p1{
       overflow:auto;
       display:block;
-      margin-left:540px;
+      margin-left:545px;
      clear:both;
       float:left;
 
@@ -40,18 +40,16 @@
     clear: both;
      }
      #p2{
-      overflow:auto;
-      display:block;
-      margin-left:670px;
-      width:95px;
+         margin-left:670px;
+      width:96px;
+         font-size: 14px;
        }
        .cs{
         color:grey;
         background-color:#f2f2f2;
-        padding:5px 8px;
-       font-size:17px;
-       font-family: 'Montserrat', sans-serif;
-font-family: 'Open Sans Condensed', sans-serif;
+        padding:7px 10px;
+       font-size:15px;
+       font-family: arial, sans-serif;
                     border-radius: 3px;
            overflow:visible;
            margin-top: 35px;
@@ -64,10 +62,8 @@ font-family: 'Open Sans Condensed', sans-serif;
             #search:hover{
                 box-shadow:0 0 2px 1.2px #d1d1d1;
             }
-            @media screen and (max-width: 80px) {
-  .left, .main, .right {
-    width: 100%;
-                }
+             #search:focus{
+                box-shadow:0 0 2px 1.2px #d1d1d1;
             }
             .goo{
                 color:#565657;
@@ -89,8 +85,8 @@ font-family: 'Open Sans Condensed', sans-serif;
             }
           #click{
               position: absolute;
-              top: 128px;
-              left: 385px;
+              top: 130px;
+              left: 390px;
                 width:25px;
                 height: 25px;
             }
@@ -104,6 +100,8 @@ font-family: 'Open Sans Condensed', sans-serif;
                 border-top: 1px solid #d6d6d6;
                 border-bottom: 1px solid #d6d6d6;
                 margin-top: 70px;
+                font-family: arial, sans-serif;
+            font-size: 13px;
             }
             li{
                 list-style-type: none;
@@ -116,7 +114,8 @@ font-family: 'Open Sans Condensed', sans-serif;
                padding-left: none;
                 text-align: left;
                 left:30px;
-
+           font-family: arial, sans-serif;
+            font-size: 13px;
             }
             
             #list{
@@ -126,17 +125,28 @@ font-family: 'Open Sans Condensed', sans-serif;
                 margin-right: 18px;
                 float:right;
                padding-left: none; 
+        font-family: arial, sans-serif;
+                font-size: 13px;
             }
-            gmail{
-                
+
+            #top{
+                z-index: 1;
+                position: relative;
+                bottom: 200px;
             }
+            
+            
         </style>
     </head>
     <body>
+        <div id="top" style="display: inline;float: right;">
+            <ul>
+                <li id="gmail"><a href="#">Gmail</a></li>
+                <li id="gmail" style="margin-right: 20px;"><a href="#">Images</a></li></ul>        </div>
         <img src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png" id="goo">
          <form>                                                                                                 
-        <div><input type="search" title="Search" id="search">
-             <img src="http://newsbytes.ph/wp-content/uploads/2016/06/microphone-icon.jpg" id="click" title="Search by voice">
+        <div ><input type="search" title="Search" id="search" autofocus>
+            <a href="https://www.google.com/"><img src="https://www.gstatic.com/images/branding/googlemic/2x/googlemic_color_24dp.png" id="click" title="Search by voice"></a>
              </div></form>
         <p id="p1" class="cs">Google Search</p>
         <p id="p2" class="cs">I'm Feeling Lucky</p>
@@ -161,7 +171,5 @@ font-family: 'Open Sans Condensed', sans-serif;
                 <li><a href="https://www.google.com/intl/en_in/policies/terms/?fg=1" class="hi">Terms</a></li>
                 <li><a href="https://www.google.com/intl/en_in/policies/privacy/?fg=1" class="hi">Privacy</a></li>
             </ul>
-             <!--  <p id="gmail">Gmail</p>-->
-
-    </body>
+  </body>
 </html>
