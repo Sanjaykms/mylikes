@@ -29,7 +29,7 @@
      #p1{
       overflow:auto;
       display:block;
-      margin-left:545px;
+      margin-left:540px;
      clear:both;
       float:left;
 
@@ -41,8 +41,7 @@
      }
      #p2{
          margin-left:670px;
-      width:96px;
-         font-size: 14px;
+      width:117px;
        }
        .cs{
         color:grey;
@@ -51,7 +50,7 @@
        font-size:15px;
        font-family: arial, sans-serif;
                     border-radius: 3px;
-           overflow:visible;
+           overflow:none;
            margin-top: 35px;
        }
     .cs:hover{
@@ -70,7 +69,8 @@
                 margin-left: 420px;
                 margin-top: 30px;
                 word-spacing: 0px;  
-                font-size: 14px;
+                font-size: 13px;
+                font-family: arial, sans-serif;
             }
             a{
                 padding-left: 4px;
@@ -90,9 +90,7 @@
                 width:25px;
                 height: 25px;
             }
-           img[title]:hover:after {
-               color: blue;
-            }
+
             #india{
                 background-color: #f7f7f7;
                 color:#808080;
@@ -105,7 +103,6 @@
             }
             li{
                 list-style-type: none;
-                
             }
             .li{
                 color:#808080;
@@ -116,6 +113,7 @@
                 left:30px;
            font-family: arial, sans-serif;
             font-size: 13px;
+
             }
             
             #list{
@@ -134,20 +132,83 @@
                 position: relative;
                 bottom: 200px;
             }
-            
+            .span{
+                right: 10px;
+                border: 2px solid white;
+                background-color: #3d3d3d;
+                color:white;
+                box-shadow: 0px 2px 0px 2px;
+                margin-right: 365px;
+                float: right;
+                position: relative;
+                font-size: 12px;
+                text-align: center;
+                border-radius: 5px;
+                padding: 7px 7px;
+                margin-top: 6px;
+            }
+            .hover .span{
+                visibility:hidden;
+                display: inline-block;
+                position: absolute;
+            }
+            .hover:hover .span{
+                visibility: visible;
+            }
+            .gmail{
+                color: black;
+                display: inline-block;
+                font-family: arial, sans-serif;
+                font-size: 13px;
+            }
+            .top{
+                color:black;
+            }
+            .top:hover{
+                color:grey;
+            }
+            .bottom{
+                width: 15px;
+                height: 15px;
+                z-index: -1;
+                clear: both;
+                display: inline;
+                margin: 0px 0px 0px 0px;
+            }
+            .sign{
+                background-color: #4285f4;
+                font-family: arial, sans-serif;
+                padding: 7px;
+                font-weight: 700;
+                color: white;
+                border-radius: 3px;
+                border: 1px solid #4285f4;
+                margin:0px;
+                
+            }
+            .hello{
+                margin: 0px;
+            }
             
         </style>
     </head>
     <body>
-        <div id="top" style="display: inline;float: right;">
-            <ul>
-                <li id="gmail"><a href="#">Gmail</a></li>
-                <li id="gmail" style="margin-right: 20px;"><a href="#">Images</a></li></ul>        </div>
+        <div id="top" style="float: right;">
+            <ul class="hello">
+                <li class="gmail" ><a href="https://mail.google.com/mail/?tab=wm0&ogbl" class="top" >Gmail</a></li>
+                <li class="gmail" style="margin-right:20px;"><a href="https://www.google.co.in/imghp?hl=en&tab=wi0&ogbl" class="top">Images</a></li>
+                <li class="gmail"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRj9l7v1_tfBg2ekPDvkDBTa0M52j7ouzCHqK2fhbFjOh6zHot6" class="bottom" ></li> 
+                <li class="gmail"><a href="https://accounts.google.com/ServiceLogin?hl=en&passive=true&continue=https://www.google.com/" style="text-decoration: none;"><p class="sign">Sign in</p></a></li>
+                </ul>    </div>
         <img src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png" id="goo">
          <form>                                                                                                 
-        <div ><input type="search" title="Search" id="search" autofocus>
-            <a href="https://www.google.com/"><img src="https://www.gstatic.com/images/branding/googlemic/2x/googlemic_color_24dp.png" id="click" title="Search by voice"></a>
-             </div></form>
+        <div>
+            <input type="search" title="Search" id="search" autofocus>
+            <div class="hover">
+                <img src="https://www.gstatic.com/images/branding/googlemic/2x/googlemic_color_24dp.png" id="click">
+                <span class="span">Search by voice</span></div>
+             </div>
+        </form>
         <p id="p1" class="cs">Google Search</p>
         <p id="p2" class="cs">I'm Feeling Lucky</p>
         <div class="goo"><bold>Google offered in:</bold><a href="">हिंदी</a>
