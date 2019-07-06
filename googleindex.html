@@ -8,7 +8,7 @@
       img{
        margin-left: 539px;
        margin-top: 200px;
-       heigth:172px;
+       heigh:172px;
        width:273px;
        display:block;
       }
@@ -75,6 +75,7 @@
             a{
                 padding-left: 4px;
                 text-decoration: none;
+                color:#1A0DAB;
             }
             a:hover{
                 text-decoration: underline;
@@ -97,7 +98,7 @@
                 padding:13px 0px 13px 24px;
                 border-top: 1px solid #d6d6d6;
                 border-bottom: 1px solid #d6d6d6;
-                margin-top: 70px;
+                margin-top: 80px;
                 font-family: arial, sans-serif;
             font-size: 13px;
             }
@@ -156,29 +157,37 @@
                 visibility: visible;
             }
             .gmail{
-                color: black;
+                color: #444445;
                 display: inline-block;
                 font-family: arial, sans-serif;
                 font-size: 13px;
+                margin: 0px;
+             position: relative;
+                bottom: 20px;
+                margin: 0px 10px 0px 0px;
+                
             }
             .top{
                 color:black;
+                position: relative;
+                bottom: 3px;
             }
             .top:hover{
                 color:grey;
             }
             .bottom{
-                width: 15px;
-                height: 15px;
+                width: 17px;
+                height: 17px;
                 z-index: -1;
                 clear: both;
                 display: inline;
                 margin: 0px 0px 0px 0px;
+            
             }
             .sign{
                 background-color: #4285f4;
                 font-family: arial, sans-serif;
-                padding: 7px;
+                padding: 7px 10px;
                 font-weight: 700;
                 color: white;
                 border-radius: 3px;
@@ -188,6 +197,21 @@
             }
             .hello{
                 margin: 0px;
+                padding: 0px;
+                font-size: 0px;
+                height: 0px;
+                
+            }
+            .signin{
+                color: black;
+                display: inline-block;
+                font-family: arial, sans-serif;
+                font-size: 13px;
+                margin: 0px 20px 0px 10px;
+             position: relative;
+            }
+            .bottom:hover{
+                opacity: 0.5;
             }
             
         </style>
@@ -197,8 +221,9 @@
             <ul class="hello">
                 <li class="gmail" ><a href="https://mail.google.com/mail/?tab=wm0&ogbl" class="top" >Gmail</a></li>
                 <li class="gmail" style="margin-right:20px;"><a href="https://www.google.co.in/imghp?hl=en&tab=wi0&ogbl" class="top">Images</a></li>
-                <li class="gmail"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRj9l7v1_tfBg2ekPDvkDBTa0M52j7ouzCHqK2fhbFjOh6zHot6" class="bottom" ></li> 
-                <li class="gmail"><a href="https://accounts.google.com/ServiceLogin?hl=en&passive=true&continue=https://www.google.com/" style="text-decoration: none;"><p class="sign">Sign in</p></a></li>
+                <li class="gmail"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRj9l7v1_tfBg2ekPDvkDBTa0M52j7ouzCHqK2fhbFjOh6zHot6" class="bottom" title="Google apps">
+                </li> 
+                <li class="signin"><a href="https://accounts.google.com/ServiceLogin?hl=en&passive=true&continue=https://www.google.com/" style="text-decoration: none;"><p class="sign">Sign in</p></a></li>
                 </ul>    </div>
         <img src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png" id="goo">
          <form>                                                                                                 
@@ -210,16 +235,16 @@
              </div>
         </form>
         <p id="p1" class="cs">Google Search</p>
-        <p id="p2" class="cs">I'm Feeling Lucky</p>
+        <p id="p2" class="cs">I'm Feeling Lucky</a></p>
         <div class="goo"><bold>Google offered in:</bold><a href="">हिंदी</a>
-            <a href="">বাঙালি</a>
-            <a href="">বাঙালি</a>
-            <a href="">తెలుగు</a>
-            <a href="">বাঙালি</a>
-            <a href="">தமிழ்</a>
-            <a href="">বাঙালি</a>
-            <a href="">മലയാളം</a>
-            <a href="">ਪੰਜਾਬੀ</a>
+            <a href="" id="googlee">বাঙালি</a>
+            <a href="" id="googlee">বাঙালি</a>
+            <a href="" id="googlee">తెలుగు</a>
+            <a href="" id="googlee">বাঙালি</a>
+            <a href="" id="googlee">தமிழ்</a>
+            <a href="" id="googlee">বাঙালি</a>
+            <a href="" id="googlee">മലയാളം</a>
+            <a href="" id="googlee">ਪੰਜਾਬੀ</a>
         </div>
 
         <p id="india">India</p>
