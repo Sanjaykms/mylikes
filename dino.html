@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initail-scale=1">
+        <title>DINO</title>
+        <meta name="theme-color" content="#031321">
+    </head>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        body{
+            min-width: 500px;
+            min-height: 200px;
+        }
+        .start{
+            border-bottom: 2px solid black;
+            width: 500px;
+            height: 200px; 
+            position: relative;
+            overflow: hidden;
+            margin: auto;
+        }
+        .char{
+            width: 20px;
+            height: 50px;
+            background-color: red;
+            position: relative;
+            top: 150px;
+        }
+        .animate{
+            animation: jump 0.5s linear;
+        }
+        .obj{
+            width: 20px;
+            height: 20px;
+            background-color: blue;
+            position: relative;
+            top: 130px;
+            left: 520px;
+            animation: obj 1s linear infinite;
+            animation-delay: 1.5s;
+        }
+        @keyframes obj{
+            0%{
+                left: 480px;
+            }
+            100%{
+                left: -40px;
+            }
+        }
+        @keyframes jump{
+            0%{
+                top: 150px;
+            }
+            30%{
+                top: 100px;
+            }
+            70%{
+                top: 100px;
+            }
+            100%{
+                top: 150px;
+            }
+        }
+        .score{
+            position: absolute;
+            width: 60px;
+            height: 40px;
+            background-color: #ccc;
+            left: 430px;
+            top:10px;
+            text-align: center;
+        }
+        .reload{
+            width: 20px;
+            height: 20px;
+            border: 2px solid;
+            border-color: #888 transparent #888 #888;
+            border-radius: 50%;
+            position: absolute;
+            top:10px;
+            left: 5px;
+            transition: transform 1s;
+            cursor: pointer;
+            z-index: 2;
+        }
+    </style>
+    <body>
+        <div class="start" onclick="jump()">
+            <div class="char" id="chart"></div>
+            <div class="obj"  id="ob"></div>
+            <div class="score">
+                <p id="second">0</p>
+                <p id="first">0</p>
+            </div>
+            <div class="reload" id="load">
+            </div>
+        </div>
+        <script>
+            var char=document.getElementById("chart");
+            var o=document.getElementById("ob");
+            function jump(){
+                if(char.classList!="animate"){
+                    char.classList.add("animate");
+                }
+                setTimeout(function(){
+                    char.classList.remove("animate");
+                },500)
+            }
+            var dead=setInterval(function(){
+               var top=parseInt(window.getComputedStyle(char).getPropertyValue("top"));
+               var left=parseInt(window.getComputedStyle(o).getPropertyValue("left"));
+               if(top>=130 && left<20 && left>0){
+                   o.style.animation="none";
+                   o.style.display="none";
+                   if(parseInt(seco.innerHTML)<parseInt(first.innerHTML)){
+                        seco.innerHTML=first.innerHTML;
+                    }
+                   clearInterval(sc);
+                   alert("poda fool...... :)   YOUR SCORE : "+first.innerHTML);
+                   first.innerHTML="0";
+               }
+            },0.5)
+            var first=document.getElementById("first");
+            var seco=document.getElementById("second");
+            var sc=setInterval(loop,100);
+            function loop(){
+                var s=parseInt(first.innerHTML);
+                first.innerHTML=s+1;
+            }  
+            document.body.addEventListener("keyup",function(event){
+                if(event.keyCode==32||event.keyCode==38||event.keyCode==13){
+                    event.preventDefault();
+                    jump();
+                }
+            })
+            var z=document.querySelector("#load");
+            var s=z.addEventListener("click",function(event){
+                if(o.style.display=="none"){
+                    if(z.style.transform==""){
+                       z.style.transform="rotate(360deg)";
+                    }
+                    else{
+                        z.style.transform="";
+                    }
+                    o.style.animation="obj 1s linear infinite 1.5s";
+                    o.style.display="block";
+                    sc=setInterval(loop,100);
+                }
+            })         
+        </script>
+    </body>
+</html>
