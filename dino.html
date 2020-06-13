@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width,initail-scale=1">
         <title>DINO</title>
-        <meta name="theme-color" content="#031321">
+        <meta name="theme-color" content="#66ffe0">
     </head>
     <style>
         *{
@@ -53,7 +53,7 @@
         }
         @keyframes jump{
             0%{
-                top: 130px;
+                top: 150px;
             }
             30%{
                 top: 100px;
@@ -89,7 +89,7 @@
         }
     </style>
     <body>
-        <div class="start" onclick="jump()">
+        <div class="start" id="star" onclick="jump()">
             <div class="char" id="chart"></div>
             <div class="obj"  id="ob"></div>
             <div class="score">
@@ -100,6 +100,8 @@
             </div>
         </div>
         <script>
+            var t=0;
+            var star=document.getElementById("star");
             var char=document.getElementById("chart");
             var o=document.getElementById("ob");
             function jump(){
@@ -110,12 +112,27 @@
                     char.classList.remove("animate");
                 },500)
             }
+            
             var dead=setInterval(function(){
                var top=parseInt(window.getComputedStyle(char).getPropertyValue("top"));
                var left=parseInt(window.getComputedStyle(o).getPropertyValue("left"));
+               if(parseInt(first.innerHTML)%200===0&&parseInt(first.innerHTML)!=0&&t==0){
+                       document.documentElement.style.backgroundColor="black";
+                       document.documentElement.style.color="red";
+                       star.style.borderBottomColor="green";
+                       t=1;
+               }else if(t===1&&parseInt(first.innerHTML)%200===0){
+                   document.documentElement.style.backgroundColor="white";
+                   document.documentElement.style.color="black";
+                   star.style.borderBottomColor="black";
+                   t=0;
+                }
                if(top>=130 && left<20 && left>0){
                    o.style.animation="none";
                    o.style.display="none";
+                   document.documentElement.style.backgroundColor="white";
+                   document.documentElement.style.color="black";
+                   star.style.borderBottomColor="black";
                    if(parseInt(seco.innerHTML)<parseInt(first.innerHTML)){
                         seco.innerHTML=first.innerHTML;
                     }
@@ -123,7 +140,7 @@
                    alert("poda fool...... :)   YOUR SCORE : "+first.innerHTML);
                    first.innerHTML="0";
                }
-            },0.5)
+            },1)
             var first=document.getElementById("first");
             var seco=document.getElementById("second");
             var sc=setInterval(loop,100);
@@ -131,7 +148,7 @@
                 var s=parseInt(first.innerHTML);
                 first.innerHTML=s+1;
             }  
-            document.body.addEventListener("keyup",function(event){
+            document.body.addEventListener("keydown",function(event){
                 if(event.keyCode==32||event.keyCode==38||event.keyCode==13){
                     event.preventDefault();
                     jump();
@@ -150,7 +167,7 @@
                     o.style.display="block";
                     sc=setInterval(loop,100);
                 }
-            })         
+            })   
         </script>
     </body>
 </html>
