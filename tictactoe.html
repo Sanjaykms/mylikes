@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <link href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap" rel="stylesheet">
+        <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    </head>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            outline: none;
+            font-family: 'Shadows Into Light', cursive;
+            letter-spacing: 5px;
+            user-select: none;
+        }
+        .container{
+            height: 100vh;
+            width: 100%;
+            background: linear-gradient(25deg,#e6cc3c 25%,#30302c 25% 50%,#f06b4d 50% 75%,#7edeb9 75%);
+            position: relative;
+            overflow: hidden;
+        }
+        .container h1{
+            position: absolute;
+            top: 10%;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            left: 50%;
+            padding:0 10px;
+            color: #e8e8e8;
+            font-size: 2.5em;
+            transform: translate(-50%,0);
+            font-weight: 800;
+            border-radius: 2em 1em 4em / 0.5em 3em;
+            animation: shake 5s infinite;
+            text-shadow: 3px 3px 1px rgba(0, 0, 0, 0.5);
+            z-index: 3;
+        }
+        @keyframes shake {
+            0% { transform: translate(-51%, 1px) rotate(0deg); }
+            10% { transform: translate(-51%, -2px) rotate(-1deg); }
+            20% { transform: translate(-53%, 0px) rotate(1deg); }
+            30% { transform: translate(-53%, 2px) rotate(0deg); }
+            40% { transform: translate(-51%, -1px) rotate(1deg); }
+            50% { transform: translate(-51%, 2px) rotate(-1deg); }
+            60% { transform: translate(-53%, 1px) rotate(0deg); }
+            70% { transform: translate(-53%, 1px) rotate(-1deg); }
+            80% { transform: translate(-51%, -1px) rotate(1deg); }
+            90% { transform: translate(-51%, 2px) rotate(0deg); }
+            100% { transform: translate(-51%, -2px) rotate(-1deg); }
+        }
+        @media (max-width: 750px) {
+            *{
+                letter-spacing: 1px;
+            }
+            .container h1{
+                font-size: 1.5em;
+            }
+            .container .score{
+                top: 26% !important;
+            }
+        }
+        .container .score{
+            display: grid;
+            color: khaki;
+            font-weight: 900;
+            position: absolute;
+            top:30%;
+            left: 50%;
+            overflow: hidden;
+            transform: translate(-50%,-50%);
+            grid-template-areas:"auto auto";
+            z-index: 3;
+        }
+        .container .score>span{
+            width: 45%;
+            height: 1px;
+            position: absolute;
+            bottom: 7px;
+            background: rgb(94, 250, 94);
+            left: -100%;
+            transition: 1s;
+        }
+        .container .point{
+            padding: 5px;
+        }
+        .container #restart{
+            display: block;
+            position: absolute;
+            top: 35%;
+            left: 50%;
+            padding: 2px 10px;
+            transform: translate(-50%,-50%);
+            font-weight: 700;
+            text-shadow: 0px 1.5px white;
+            background-color: #59ffaf;
+            border:none;
+            box-shadow: inset 0px 5px 10px rgba(0, 0, 0, 0.5);
+            border-radius: 5px;
+            border: 1px solid #e6cc3c;
+            cursor: pointer;
+            transition: background 1s;
+        }
+        .container #restart:active{
+            background: linear-gradient(25deg,#e6cc3c 25%,#30302c 25% 50%,#f06b4d 50% 75%,#7edeb9 75%);
+            border: 1px dashed;
+        }
+        .container #restart:hover{
+            background-color: #18ff8f;
+            border: 1px dashed;
+        }
+        .container .boxes{
+            position: absolute;
+            top: 65%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            display: grid;
+            background: linear-gradient(25deg,#e6cc3c 25%,#30302c 25% 50%,#f06b4d 50% 75%,#7edeb9 75%);
+            box-shadow: 0px 0px 50px 20px rgba(0, 0, 0, 0.2);
+            grid-template-columns:auto auto auto;
+            animation: bo 2s;
+        }
+        .container .boxes:hover{
+            box-shadow: 0px 0px 50px 20px rgba(255, 54, 54, 0.2);
+        }
+        @keyframes boom {
+            0%{
+                top:30%;
+                left: 40%;
+                transform: scale(7);
+            }
+        }
+        .container .boxes span{
+            height: 100px;
+            font-size: 3em;
+            text-align: center;
+            line-height: 100px;
+            width: 100px;
+            cursor: pointer;
+        }
+        .container .boxes span:nth-child(1){
+            border: solid rgba(0, 0, 0, 0.5);
+            border-width: 0 2px 2px 0;
+        }
+        .container .boxes span:nth-child(2){
+            border: solid rgba(0, 0, 0, 0.5);
+            border-width: 0 2px 2px 0;
+        }
+        .container .boxes span:nth-child(3){
+            border: solid rgba(0, 0, 0, 0.5);
+            border-width: 0 0 2px 0;
+        }
+        .container .boxes span:nth-child(4){
+            border: solid rgba(0, 0, 0, 0.5);
+            border-width: 0 2px 2px 0;
+        }
+        .container .boxes span:nth-child(5){
+            border: solid rgba(0, 0, 0, 0.5);
+            border-width: 0 2px 2px 0;
+        }
+        .container .boxes span:nth-child(6){
+            border: solid rgba(0, 0, 0, 0.5);
+            border-width: 0 0 2px 0;
+        }
+        .container .boxes span:nth-child(7){
+            border: solid rgba(0, 0, 0, 0.5);
+            border-width: 0 2px 0 0;
+        }
+        .container .boxes span:nth-child(8){
+            border: solid rgba(0, 0, 0, 0.5);
+            border-width: 0 2px 0 0;
+        }
+        .container .nav{
+            background: #999;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            padding: 20px;
+            box-shadow: inset 5px 5px 50px 10px #222;
+            z-index: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: .5s;
+        }
+        .container .nav .inner{
+            width: 300px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .container .nav .inner .play{
+            display: flex;
+            text-transform: uppercase;
+            margin: 10px;
+        }
+        .container .nav .inner .refresh button{
+            font-weight: 500;
+            text-shadow: 0px 1.5px white;
+            background-color: #ff6459;
+            border:none;
+            padding: 5px 10px;
+            box-shadow: inset 0px 5px 10px rgba(0, 0, 0, 0.5);
+            border-radius: 5px;
+            border: 1px solid #e6cc3c;
+            cursor: pointer;
+            margin: 10px;
+            transition: background 1s;
+        }
+        .container .nav .inner .refresh button:active{
+            background: linear-gradient(25deg,#e6cc3c 25%,#30302c 25% 50%,#f06b4d 50% 75%,#7edeb9 75%);
+            border: 1px dashed;
+        }
+        .container .nav .inner .refresh button:hover{
+            background-color: #ff3a2c;
+            border: 1px dashed;
+        }
+        .container .nav .inner .play label{
+            padding: 5px;
+            background: orange;
+            border-radius: 50%;
+            border: 1px solid;
+            cursor: pointer;
+            margin: 0 5px;
+            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2);
+            transition: 1s;
+        }
+        .container .nav .inner .play label:hover{
+            background: rgb(255, 136, 0);
+        }
+        .container .nav .inner .play input{
+            opacity: 0;
+        }
+        .container .nav .inner .play input:checked+label{
+            background: #59ffaf;
+            border: 1px dashed;
+        }
+        .container .nav .inner .done{
+            margin: 10px;
+        }
+        .container .nav .inner .done button{
+            background: cornflowerblue;
+            border: 1px solid;
+            border-color: cyan burlywood #555;
+            padding:5px 10px;
+            text-shadow: 0px 1.5px white;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 1s;
+            box-shadow: inset 0px 5px 10px rgba(0, 0, 0, 0.5);
+        }
+        .container .nav .inner .done button:hover{
+            background: rgb(33, 111, 255);
+            border: 1px dashed;
+        }
+        .container .nav .inner .done button:active{
+            text-decoration: line-through;
+            background: lightblue;
+            border: 1px dashed;
+        }
+    </style>
+    <body>
+        <div class="container">
+            <h1>TIC TAC TOE</h1>
+            <div class="score">
+                <h2 class="point" id="ex">P1<span id="player1"></span>=<span id="value1">0</span></h2>
+                <h2 class="point" id="oo">P2<span id="player2"></span>=<span id="value2">0</span></h2>
+                <span id="identity"></span>
+            </div>
+            <button id="restart">RESTART <i class="fa fa-refresh" aria-hidden="true" style="pointer-events: none;"></i></button>
+            <div class="boxes">
+                <span class="me"></span>
+                <span class="me"></span>
+                <span class="me"></span>
+                <span class="me"></span>
+                <span class="me"></span>
+                <span class="me"></span>
+                <span class="me"></span>
+                <span class="me"></span>
+                <span class="me"></span>
+            </div>
+            <div class="nav">
+                <div class="inner">
+                    <div class="play play1">
+                        <h3>Player 1 =:</h3>
+                        <input type="radio" value="o" name="pl1" id="pl1o" class="ra" checked><label for="pl1o">O</label>
+                        <input type="radio" value="x" name="pl1" id="pl1x" class="ra"><label for="pl1x">X</label>
+                    </div>
+                    <div class="play play2">
+                        <h3>Player 2 =: </h3>
+                        <input type="radio" value="o" name="pl2" id="pl2o" class="r"><label for="pl2o">O</label>
+                        <input type="radio" value="x" name="pl2" id="pl2x" class="r" checked><label for="pl2x">X</label>
+                    </div>
+                    <div class="refresh">
+                        <button id="refresh1">Refresh <i class="fa fa-refresh" aria-hidden="true" style="pointer-events: none;"></i></button>
+                    </div>
+                    <div class="done">
+                        <button value="done" id="start">START</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            //nav player values select
+            var v1="",v2="",ne="",sub=document.querySelectorAll(".me");
+            var p1=document.getElementById("value1"),p2=document.getElementById("value2");
+            var nav=document.getElementsByClassName("nav")[0];
+            var mark=document.getElementById("identity");
+            var blank1=document.getElementById("player1");
+            var blank2=document.getElementById("player2");
+            var boxs=document.getElementsByClassName("boxes")[0];
+            document.getElementById("start").addEventListener("click",function(){
+                var a=document.getElementsByClassName("ra");
+                var b=document.getElementsByClassName("r");
+                v1="",v2="";
+                for(var i=0;a.length>i;i++){
+                    if(a[i].checked){
+                        v1=a[i].value;
+                    }
+                }
+                for(var i=0;b.length>i;i++){
+                    if(b[i].checked){
+                        v2=b[i].value;
+                    }
+                }
+                if(v1==v2){
+                    alert("Values must be different");
+                }
+                else{
+                    nav.style.zIndex="-1";
+                    blank1.innerHTML="["+v1+"]";
+                    blank2.innerHTML="["+v2+"]";
+                    mark.style.left="0";
+                    boxs.style.animation="boom 2s";
+                }
+            });
+            //box values
+            var p=0;
+            for(var k=0;sub.length>k;k++){
+                sub[k].addEventListener("click",function(e){
+                    if(p<9&&e.target.innerHTML==""){
+                        if(p%2==0){
+                            e.target.innerHTML=v1;
+                            mark.style.left="50%";
+                            setTimeout(check,800,"Player 1");
+                        }
+                        else{
+                            e.target.innerHTML=v2;
+                            mark.style.left="0";
+                            setTimeout(check,800,"Player 2");
+                        }
+                        p++;
+                    }
+                })
+            }
+            //restart button
+            document.querySelector("#restart").addEventListener("click",function(){
+                re();
+            })
+            function re(){
+                for(var k=0;sub.length>k;k++){
+                    sub[k].innerHTML="";
+                    p=0;
+                    mark.style.left="-100%";
+                    nav.style.zIndex="1";
+                    blank1.innerHTML="";
+                    blank2.innerHTML="";
+                    boxs.style.animation="bo 2s";
+                }
+            }
+            function check(l){
+                if((sub[0].innerHTML=="o"&&sub[1].innerHTML=="o"&&sub[2].innerHTML=="o")||(sub[0].innerHTML=="x"&&sub[1].innerHTML=="x"&&sub[2].innerHTML=="x")){
+                    alert(l+" wins");
+                    points(l);
+                    re();
+                }
+                else if((sub[3].innerHTML=="o"&&sub[4].innerHTML=="o"&&sub[5].innerHTML=="o")||(sub[3].innerHTML=="x"&&sub[4].innerHTML=="x"&&sub[5].innerHTML=="x")){
+                    alert(l+" wins");
+                    points(l);
+                    re();
+                }
+                else if((sub[6].innerHTML=="o"&&sub[7].innerHTML=="o"&&sub[8].innerHTML=="o")||(sub[6].innerHTML=="x"&&sub[7].innerHTML=="x"&&sub[8].innerHTML=="x")){
+                    alert(l+" wins");
+                    points(l);
+                    re();
+                }
+                else if((sub[0].innerHTML=="o"&&sub[3].innerHTML=="o"&&sub[6].innerHTML=="o")||(sub[0].innerHTML=="x"&&sub[3].innerHTML=="x"&&sub[6].innerHTML=="x")){
+                    alert(l+" wins");
+                    points(l);
+                    re();
+                }
+                else if((sub[1].innerHTML=="o"&&sub[4].innerHTML=="o"&&sub[7].innerHTML=="o")||(sub[1].innerHTML=="x"&&sub[4].innerHTML=="x"&&sub[7].innerHTML=="x")){
+                    alert(l+" wins");
+                    points(l);
+                    re();
+                }
+                else if((sub[2].innerHTML=="o"&&sub[5].innerHTML=="o"&&sub[8].innerHTML=="o")||(sub[2].innerHTML=="x"&&sub[5].innerHTML=="x"&&sub[8].innerHTML=="x")){
+                    alert(l+" wins");
+                    points(l);
+                    re();
+                }
+                else if((sub[0].innerHTML=="o"&&sub[4].innerHTML=="o"&&sub[8].innerHTML=="o")||(sub[0].innerHTML=="x"&&sub[4].innerHTML=="x"&&sub[8].innerHTML=="x")){
+                    alert(l+" wins");
+                    points(l);
+                    re();
+                }
+                else if((sub[2].innerHTML=="o"&&sub[4].innerHTML=="o"&&sub[6].innerHTML=="o")||(sub[2].innerHTML=="x"&&sub[4].innerHTML=="x"&&sub[6].innerHTML=="x")){
+                    alert(l+" wins");
+                    points(l);
+                    re();
+                }
+                else if(p>=9){
+                    alert("Oh it's a draw");
+                    points(" ");
+                    re();
+                }
+            }
+            //points
+            function points(h){
+                if(h=="Player 1"){
+                    p1.innerHTML=parseInt(p1.innerHTML)+1;
+                }
+                if(h=="Player 2"){
+                    p2.innerHTML=parseInt(p2.innerHTML)+1;
+                }
+            }//refresh button
+            document.getElementById("refresh1").addEventListener("click",function(){
+                p1.innerHTML=0;
+                p2.innerHTML=0;
+                document.getElementById("pl1o").checked="true";
+                document.getElementById("pl2x").checked="true";
+            })
+        </script>
+    </body>
+</html>
