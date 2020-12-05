@@ -339,9 +339,94 @@
             justify-content: center;
             padding: 25px;
         }
+
+        /*loading */
+        .newload{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 100vh;
+            background-color: #f9ff4d;
+        }
+        .boxxes{
+            position: relative;
+            width: 200px;
+            height: 200px;
+            background-color: #f4fc19;
+        }
+        .boxxes span{
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+        }
+        .boxxes span::before{
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 60px;
+            background-color: lightblue;
+            animation: animated 2s linear infinite;
+            transform: scaleX(0);
+        }
+        .boxxes span:nth-child(1){
+            transform: rotate(0);
+        }
+        .boxxes span:nth-child(2){
+            transform: rotate(90deg);
+        }
+        .boxxes span:nth-child(3){
+            transform: rotate(180deg);
+        }
+        .boxxes span:nth-child(4){
+            transform: rotate(270deg);
+        }
+        @keyframes animated{
+            0%{
+                transform: scaleX(0);
+                transform-origin: left;
+            }
+            25%{
+                transform: scaleX(1);
+                transform-origin: left;
+            }
+            25.0001%{
+                transform-origin: right;
+            }
+            50%,100%{
+                transform: scaleX(0);
+                transform-origin: right;
+            }
+            
+        }
+        .boxxes span:nth-child(1)::before{
+            animation-delay: 0s;
+        }
+        .boxxes span:nth-child(2)::before{
+            animation-delay: 0.5s;
+        }
+        .boxxes span:nth-child(3)::before{
+            animation-delay: 1s;
+        }
+        .boxxes span:nth-child(4)::before{
+            animation-delay: 1.5s;
+        }
     </style>
-    <body>
-        <div class="container">
+    <body onload="myfunction1()">
+        <div class="newload">
+        <div class="boxxes">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        </div>
+        <!--Loading-->
+        <div class="container" style="display: none;">
             <h1 class="h1">TIC TAC TOE</h1>
             <div class="score">
                 <h2 class="point" id="ex">P1<span id="player1"></span>=<span id="value1">0</span></h2>
@@ -394,6 +479,16 @@
             </div>
         </div>
         <script>
+            //loading
+            var loadingscr;
+            function myfunction1(){
+                setTimeout(showout,3000);
+            }
+            function showout(){
+                document.querySelector(".newload").style.display="none";
+                document.querySelector(".container").style.display="block";
+            }
+
             //main
             var one1=document.getElementById("oneplay");
             var ma=document.getElementsByClassName("main")[0];
