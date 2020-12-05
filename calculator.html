@@ -121,6 +121,83 @@
                     }
 
             }
+            
+            
+            
+            .newload{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 100vh;
+            background-color: #fbff85;
+        }
+        .boxxes{
+            position: relative;
+            width: 200px;
+            height: 200px;
+            background-color: #f4fc19;
+        }
+        .boxxes span{
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+        }
+        .boxxes span::before{
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 60px;
+            background-color: lightblue;
+            animation: animated 2s linear infinite;
+            transform: scaleX(0);
+        }
+        .boxxes span:nth-child(1){
+            transform: rotate(0);
+        }
+        .boxxes span:nth-child(2){
+            transform: rotate(90deg);
+        }
+        .boxxes span:nth-child(3){
+            transform: rotate(180deg);
+        }
+        .boxxes span:nth-child(4){
+            transform: rotate(270deg);
+        }
+        @keyframes animated{
+            0%{
+                transform: scaleX(0);
+                transform-origin: left;
+            }
+            25%{
+                transform: scaleX(1);
+                transform-origin: left;
+            }
+            25.0001%{
+                transform-origin: right;
+            }
+            50%,100%{
+                transform: scaleX(0);
+                transform-origin: right;
+            }
+            
+        }
+        .boxxes span:nth-child(1)::before{
+            animation-delay: 0s;
+        }
+        .boxxes span:nth-child(2)::before{
+            animation-delay: 0.5s;
+        }
+        .boxxes span:nth-child(3)::before{
+            animation-delay: 1s;
+        }
+        .boxxes span:nth-child(4)::before{
+            animation-delay: 1.5s;
+        }
         </style>
         <script>
             var v="";
@@ -196,9 +273,28 @@
                 document.getElementById("input1").value+="="+eval(v);
                 document.getElementById("input2").value=eval(v);
             }
+            
+               //loading
+            var loadingscr;
+            function myfunction1(){
+                setTimeout(showout,3000);
+            }
+            function showout(){
+                document.querySelector(".newload").style.display="none";
+                document.querySelector(".container").style.display="block";
+            }
         </script>
     </head>
     <body>
+        <div class="newload">
+        <div class="boxxes">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        </div>
+        
         <section class="main">
             <header class="header">Calculator</header>
             <section class="calc key">
