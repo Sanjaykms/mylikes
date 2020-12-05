@@ -109,6 +109,7 @@
         }
         .container #restart:hover{
             background-color: #18ff8f;
+            color: rgb(138, 100, 138);
             border: 1px dashed;
         }
         .container .boxes{
@@ -303,6 +304,7 @@
         }
         .container .main .main1 .one button:hover{
             background: rgb(255, 101, 101);
+            color: white;
         }
         .container .main .main1 .one button:active{
             border: 1px solid rgb(255, 19, 19);
@@ -342,7 +344,7 @@
             <h1 class="h1">TIC TAC TOE</h1>
             <div class="score">
                 <h2 class="point" id="ex">P1<span id="player1"></span>=<span id="value1">0</span></h2>
-                <h2 class="point" id="oo">P2<span id="player2"></span>=<span id="value2">0</span></h2>
+                <h2 class="point" id="oo"><span id="comp">P2</span><span id="player2"></span>=<span id="value2">0</span></h2>
                 <span id="identity"></span>
             </div>
             <button id="restart">RESTART <i class="fa fa-refresh" aria-hidden="true" style="pointer-events: none;"></i></button>
@@ -365,7 +367,7 @@
                         <input type="radio" value="x" name="pl1" id="pl1x" class="ra"><label for="pl1x">X</label>
                     </div>
                     <div class="play play2">
-                        <h3>Player 2 =: </h3>
+                        <h3 id="computer">Player 2 =: </h3>
                         <input type="radio" value="o" name="pl2" id="pl2o" class="r"><label for="pl2o">O</label>
                         <input type="radio" value="x" name="pl2" id="pl2x" class="r" checked><label for="pl2x">X</label>
                     </div>
@@ -392,6 +394,7 @@
         </div>
         <script>
             //main
+            var one1=document.getElementById("oneplay");
             var ma=document.getElementsByClassName("main")[0];
             document.getElementById("twoplay").addEventListener("click",function(){
                 ma.style.zIndex="-1";
@@ -407,16 +410,17 @@
             var blank1=document.getElementById("player1");
             var blank2=document.getElementById("player2");
             var boxs=document.getElementsByClassName("boxes")[0];
-            document.getElementById("start").addEventListener("click",function(){
-                var a=document.getElementsByClassName("ra");
-                var b=document.getElementsByClassName("r");
+            var st=document.getElementById("start");
+            var a=document.getElementsByClassName("ra");
+            var b=document.getElementsByClassName("r");
+            st.addEventListener("click",function(){
                 v1="",v2="";
                 for(var i=0;a.length>i;i++){
                     if(a[i].checked){
                         v1=a[i].value;
                     }
                 }
-                for(var i=0;b.length>i;i++){
+                    for(var i=0;b.length>i;i++){
                     if(b[i].checked){
                         v2=b[i].value;
                     }
@@ -438,6 +442,21 @@
                     boxs.style.animation="boom 2s";
                 }
             });
+
+
+            //computer checked value change
+            setInterval(function(){
+                if(namecom.innerHTML=="COM"){
+                    if(a[0].checked){
+                        b[1].checked="true";
+                    }
+                    else{
+                        b[0].checked="true";
+                    }
+                }
+            },100);
+            
+
             //box values
             var p=0;
             for(var k=0;sub.length>k;k++){
@@ -446,12 +465,19 @@
                         if(p%2==0){
                             e.target.innerHTML=v1;
                             mark.style.left="50%";
-                            setTimeout(check,800,"Player 1");
+                            if(p!=99){
+                            setTimeout(check,500,"Player 1");
+                            }
+                            if(namecom.innerHTML=="COM"){
+                                setTimeout(single,1000,"Computer");
+                            }
                         }
                         else{
                             e.target.innerHTML=v2;
                             mark.style.left="0";
+                            if(p!=99){
                             setTimeout(check,800,"Player 2");
+                            }
                         }
                         p++;
                     }
@@ -476,183 +502,33 @@
                 }
             }
             function check(l){
-                if((sub[0].innerHTML=="o"&&sub[1].innerHTML=="o"&&sub[2].innerHTML=="o")||(sub[0].innerHTML=="x"&&sub[1].innerHTML=="x"&&sub[2].innerHTML=="x")){
-                    sub[0].style.fontSize="5em";
-                    sub[1].style.fontSize="5em";
-                    sub[2].style.fontSize="5em";
-                    sub[0].style.color="blue";
-                    sub[1].style.color="blue";
-                    sub[2].style.color="blue";
-                    sub[0].style.background="rgba(235, 255, 163,0.5)";
-                    sub[1].style.background="rgba(235, 255, 163,0.5)";
-                    sub[2].style.background="rgba(235, 255, 163,0.5)";
+                var array=[[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]];
+                for(var i=0;array.length>i;i++){
+                if((sub[array[i][0]].innerHTML=="o"&&sub[array[i][1]].innerHTML=="o"&&sub[array[i][2]].innerHTML=="o")||(sub[array[i][0]].innerHTML=="x"&&sub[array[i][1]].innerHTML=="x"&&sub[array[i][2]].innerHTML=="x")){
+                    sub[array[i][0]].style.fontSize="5em";
+                    sub[array[i][1]].style.fontSize="5em";
+                    sub[array[i][2]].style.fontSize="5em";
+                    sub[array[i][0]].style.color="blue";
+                    sub[array[i][1]].style.color="blue";
+                    sub[array[i][2]].style.color="blue";
+                    sub[array[i][0]].style.background="rgba(235, 255, 163,0.5)";
+                    sub[array[i][1]].style.background="rgba(235, 255, 163,0.5)";
+                    sub[array[i][2]].style.background="rgba(235, 255, 163,0.5)";
                     setTimeout(function(){
                         setTimeout(function(){
                         win.style.zIndex="999";
-                    },500);
-                    winner.innerHTML=l+" wins";
-                    setTimeout(function(){
-                        win.style.zIndex="-1";
-                    },2000);
-                    },1000);
-                    points(l);
-                    setTimeout(re,3500);
-                }
-                else if((sub[3].innerHTML=="o"&&sub[4].innerHTML=="o"&&sub[5].innerHTML=="o")||(sub[3].innerHTML=="x"&&sub[4].innerHTML=="x"&&sub[5].innerHTML=="x")){
-                    sub[3].style.fontSize="5em";
-                    sub[4].style.fontSize="5em";
-                    sub[5].style.fontSize="5em";
-                    sub[3].style.color="blue";
-                    sub[4].style.color="blue";
-                    sub[5].style.color="blue";
-                    sub[3].style.background="rgba(235, 255, 163,0.5)";
-                    sub[4].style.background="rgba(235, 255, 163,0.5)";
-                    sub[5].style.background="rgba(235, 255, 163,0.5)";
-                    setTimeout(function(){
+                        },500);
+                        winner.innerHTML=l+" wins";
                         setTimeout(function(){
-                        win.style.zIndex="999";
-                    },500);
-                    winner.innerHTML=l+" wins";
-                    setTimeout(function(){
                         win.style.zIndex="-1";
-                    },2000);
+                        },2000);
                     },1000);
                     points(l);
                     setTimeout(re,3500);
-                }
-                else if((sub[6].innerHTML=="o"&&sub[7].innerHTML=="o"&&sub[8].innerHTML=="o")||(sub[6].innerHTML=="x"&&sub[7].innerHTML=="x"&&sub[8].innerHTML=="x")){
-                    sub[6].style.fontSize="5em";
-                    sub[7].style.fontSize="5em";
-                    sub[8].style.fontSize="5em";
-                    sub[6].style.color="blue";
-                    sub[7].style.color="blue";
-                    sub[8].style.color="blue";
-                    sub[6].style.background="rgba(235, 255, 163,0.5)";
-                    sub[7].style.background="rgba(235, 255, 163,0.5)";
-                    sub[8].style.background="rgba(235, 255, 163,0.5)";
-                    setTimeout(function(){
-                        setTimeout(function(){
-                        win.style.zIndex="999";
-                    },500);
-                    winner.innerHTML=l+" wins";
-                    setTimeout(function(){
-                        win.style.zIndex="-1";
-                    },2000);
-                    },1000);
-                    points(l);
-                    setTimeout(re,3500);
-                }
-                else if((sub[0].innerHTML=="o"&&sub[3].innerHTML=="o"&&sub[6].innerHTML=="o")||(sub[0].innerHTML=="x"&&sub[3].innerHTML=="x"&&sub[6].innerHTML=="x")){
-                    sub[0].style.fontSize="5em";
-                    sub[3].style.fontSize="5em";
-                    sub[6].style.fontSize="5em";
-                    sub[0].style.color="blue";
-                    sub[3].style.color="blue";
-                    sub[6].style.color="blue";
-                    sub[0].style.background="rgba(235, 255, 163,0.5)";
-                    sub[3].style.background="rgba(235, 255, 163,0.5)";
-                    sub[6].style.background="rgba(235, 255, 163,0.5)";
-                    setTimeout(function(){
-                        setTimeout(function(){
-                        win.style.zIndex="999";
-                    },500);
-                    winner.innerHTML=l+" wins";
-                    setTimeout(function(){
-                        win.style.zIndex="-1";
-                    },2000);
-                    },1000);
-                    points(l);
-                    setTimeout(re,3500);
-                }
-                else if((sub[1].innerHTML=="o"&&sub[4].innerHTML=="o"&&sub[7].innerHTML=="o")||(sub[1].innerHTML=="x"&&sub[4].innerHTML=="x"&&sub[7].innerHTML=="x")){
-                    sub[1].style.fontSize="5em";
-                    sub[4].style.fontSize="5em";
-                    sub[7].style.fontSize="5em";
-                    sub[1].style.color="blue";
-                    sub[4].style.color="blue";
-                    sub[7].style.color="blue";
-                    sub[1].style.background="rgba(235, 255, 163,0.5)";
-                    sub[4].style.background="rgba(235, 255, 163,0.5)";
-                    sub[7].style.background="rgba(235, 255, 163,0.5)";
-                    setTimeout(function(){
-                        setTimeout(function(){
-                        win.style.zIndex="999";
-                    },500);
-                    winner.innerHTML=l+" wins";
-                    setTimeout(function(){
-                        win.style.zIndex="-1";
-                    },2000);
-                    },1000);
-                    points(l);
-                    setTimeout(re,3500);
-                }
-                else if((sub[2].innerHTML=="o"&&sub[5].innerHTML=="o"&&sub[8].innerHTML=="o")||(sub[2].innerHTML=="x"&&sub[5].innerHTML=="x"&&sub[8].innerHTML=="x")){
-                    sub[2].style.fontSize="5em";
-                    sub[5].style.fontSize="5em";
-                    sub[8].style.fontSize="5em";
-                    sub[2].style.color="blue";
-                    sub[5].style.color="blue";
-                    sub[8].style.color="blue";
-                    sub[2].style.background="rgba(235, 255, 163,0.5)";
-                    sub[5].style.background="rgba(235, 255, 163,0.5)";
-                    sub[8].style.background="rgba(235, 255, 163,0.5)";
-                    setTimeout(function(){
-                        setTimeout(function(){
-                        win.style.zIndex="999";
-                    },500);
-                    winner.innerHTML=l+" wins";
-                    setTimeout(function(){
-                        win.style.zIndex="-1";
-                    },2000);
-                    },1000);
-                    points(l);
-                    setTimeout(re,3500);
-                }
-                else if((sub[0].innerHTML=="o"&&sub[4].innerHTML=="o"&&sub[8].innerHTML=="o")||(sub[0].innerHTML=="x"&&sub[4].innerHTML=="x"&&sub[8].innerHTML=="x")){
-                    sub[0].style.fontSize="5em";
-                    sub[4].style.fontSize="5em";
-                    sub[8].style.fontSize="5em";
-                    sub[0].style.color="blue";
-                    sub[4].style.color="blue";
-                    sub[8].style.color="blue";
-                    sub[0].style.background="rgba(235, 255, 163,0.5)";
-                    sub[4].style.background="rgba(235, 255, 163,0.5)";
-                    sub[8].style.background="rgba(235, 255, 163,0.5)";
-                    setTimeout(function(){
-                        setTimeout(function(){
-                        win.style.zIndex="999";
-                    },500);
-                    winner.innerHTML=l+" wins";
-                    setTimeout(function(){
-                        win.style.zIndex="-1";
-                    },2000);
-                    },1000);
-                    points(l);
-                    setTimeout(re,3500);
-                }
-                else if((sub[2].innerHTML=="o"&&sub[4].innerHTML=="o"&&sub[6].innerHTML=="o")||(sub[2].innerHTML=="x"&&sub[4].innerHTML=="x"&&sub[6].innerHTML=="x")){
-                    sub[2].style.fontSize="5em";
-                    sub[4].style.fontSize="5em";
-                    sub[6].style.fontSize="5em";
-                    sub[2].style.color="blue";
-                    sub[4].style.color="blue";
-                    sub[6].style.color="blue";
-                    sub[2].style.background="rgba(235, 255, 163,0.5)";
-                    sub[4].style.background="rgba(235, 255, 163,0.5)";
-                    sub[6].style.background="rgba(235, 255, 163,0.5)";
-                    setTimeout(function(){
-                        setTimeout(function(){
-                        win.style.zIndex="999";
-                    },500);
-                    winner.innerHTML=l+" wins";
-                    setTimeout(function(){
-                        win.style.zIndex="-1";
-                    },2000);
-                    },1000);
-                    points(l);
-                    setTimeout(re,3500);
-                }
-                else if(p>=9){
+                    p=99;
+                    break;
+                }}
+                if(p==9){
                         setTimeout(function(){
                         win.style.zIndex="999";
                     },500);
@@ -660,7 +536,6 @@
                     setTimeout(function(){
                         win.style.zIndex="-1";
                     },2000);
-                    points(" ");
                     setTimeout(re,2500);
                 }
             }
@@ -669,7 +544,7 @@
                 if(h=="Player 1"){
                     p1.innerHTML=parseInt(p1.innerHTML)+1;
                 }
-                if(h=="Player 2"){
+                if(h=="Player 2"||h=="Computer"){
                     p2.innerHTML=parseInt(p2.innerHTML)+1;
                 }
             }
@@ -680,7 +555,84 @@
                 ma.style.zIndex="99";
                 document.getElementById("pl1o").checked="true";
                 document.getElementById("pl2x").checked="true";
-            })
+                com.innerHTML="player 2 =:";
+                namecom.innerHTML="P2";
+                pl2os.style.pointerEvents="all";
+            });
+            //computer play
+            var namecom=document.getElementById("comp");
+            var com=document.getElementById("computer");
+            var pl2os=document.getElementsByClassName("play2")[0];
+            one1.addEventListener("click",function(){
+                ma.style.zIndex="-1";
+                com.innerHTML="Computer =:";
+                namecom.innerHTML="COM";
+                pl2os.style.pointerEvents="none";
+            }); 
+
+
+            //computer player one 
+            function single(c){
+                if(p!=99){
+                var br=1;
+                mark.style.left="0";
+                var arr=[[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]];
+                for(var i=0;arr.length>i;i++){
+                    //console.log(arr[i][0]+" "+arr[i][1]+" "+arr[i][2]);
+                if(sub[arr[i][0]].innerHTML==v2&&sub[arr[i][1]].innerHTML==v2&&sub[arr[i][2]].innerHTML==""){
+                    sub[arr[i][2]].innerHTML=v2;
+                    br=0;
+                    //console.log("on"+i);
+                    break;
+                }
+                else if(sub[arr[i][0]].innerHTML==v2&&sub[arr[i][1]].innerHTML==""&&sub[arr[i][2]].innerHTML==v2){
+                    sub[arr[i][1]].innerHTML=v2;
+                    br=0;
+                    //console.log("tw"+i);
+                    break;
+                }
+                else if(sub[arr[i][0]].innerHTML==""&&sub[arr[i][1]].innerHTML==v2&&sub[arr[i][2]].innerHTML==v2){
+                    sub[arr[i][0]].innerHTML=v2;
+                    br=0;
+                    //console.log("th"+i);
+                    break;
+                }
+                }
+                for(var i=0;arr.length>i;i++){
+                    if(br==1&&sub[arr[i][0]].innerHTML==v1&&sub[arr[i][1]].innerHTML==v1&&sub[arr[i][2]].innerHTML!=v2){
+                    sub[arr[i][2]].innerHTML=v2;
+                    br=0;
+                    //console.log("fo");
+                    break;
+                }
+                else if(br==1&&sub[arr[i][0]].innerHTML!=v2&&sub[arr[i][1]].innerHTML==v1&&sub[arr[i][2]].innerHTML==v1){
+                    sub[arr[i][0]].innerHTML=v2;
+                    br=0;
+                    //console.log("fi");
+                    break;
+                }
+                else if(br==1&&sub[arr[i][0]].innerHTML==v1&&sub[arr[i][1]].innerHTML!=v2&&sub[arr[i][2]].innerHTML==v1){
+                    sub[arr[i][1]].innerHTML=v2;
+                    br=0;
+                    //console.log("si");
+                    break;
+                }
+                }
+                if(p==1||br==1){
+                sub[rec()].innerHTML=v2;
+                }
+                setTimeout(check,800,c);
+                //console.log(c+" "+br);
+                p++;
+            }}
+            function rec(){
+                s=parseInt(Math.random()*10);
+                if(s>=9||sub[s].innerHTML=="x"||sub[s].innerHTML=="o"){
+                    rec();
+                }
+                //console.log(p+":"+s);
+                return s;
+            }
         </script>
     </body>
 </html>
