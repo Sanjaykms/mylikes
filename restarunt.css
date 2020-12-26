@@ -1,0 +1,212 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    text-shadow: 0px 2px 2px rgba(0, 0, 0, 0.1);
+}
+html{
+    font-weight: 900;
+    font-size: 10px;
+    color: #272727;
+    background: url(https://jolly-kalam-23776e.netlify.app/restaurantwebsite/assets/images/topography.svg),linear-gradient(90deg,#f93d66,#a73efd);
+    background-attachment: fixed;
+}
+body{
+    padding: 70px 50px;
+}
+.wrap{
+    display: grid;
+    grid-gap: 20px;
+    overflow:auto;
+}
+.nav{
+    position: relative;
+    word-wrap:break-word;
+}
+.nav .main{
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: 2em;
+    padding: 10px 20px 10px 10px;
+    background-color: #ffc600;
+    cursor: pointer;
+    display: none;
+    font-weight:100;
+}
+.nav .main h6 span{
+  position: absolute;
+  top: 0%;
+  left: 10%;
+}
+.nav .main h6{
+    position: relative;
+    padding-left:20px;
+}
+.nav ul{
+    display: grid;
+    width: 100%;
+    perspective: 1000px;
+    transform-style: preserve-3d;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    grid-gap: 10px;
+    list-style-type: none;
+    transition: all 0.3s;
+    transform: rotateX(0);
+}
+.nav ul li{
+    background-color: #ffc600;
+    text-transform: uppercase;
+    font-size: 2em;
+    padding: 10px;
+    text-align: center;
+    cursor: pointer;
+}
+.nav ul li a{
+    text-decoration: none;
+    color: #272727;
+}
+.info{
+    transition: all 0.8s;
+    display: grid;
+    grid-template-areas:"item1 item1 item2"
+                         "item1 item1 item3" ;
+    min-width:100%;
+    min-height: 400px;
+    grid-gap: 20px;
+}
+.info .one{
+    grid-area: item1;
+    background:url(https://jolly-kalam-23776e.netlify.app/restaurantwebsite/images/taco.jpg);
+    padding: 50px;
+    min-height: 400px;
+    display: flex;
+    background-size: cover;
+    flex-direction: column;
+    background-position: bottom right;
+}
+.info h2{
+    font-size: 30px;
+    align-self: start;
+    margin: 100px 0 15px 0;
+}
+.info h4{
+    font-size: 15px;
+    align-self: start;
+    font-weight: 900;
+    letter-spacing: -1px;
+}
+.info h2,.info h4{
+    padding: 7px 5px;
+    background-color: #ffc600;
+}
+.info .two{
+    grid-area: item2;
+}
+.info .thr{
+    grid-area: item3;
+}
+.info .fea{
+    background-color: #ffc600;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.info .fea h1{
+    font-size: 50px;
+    font-weight: 100;
+}
+.info .fea h5{
+    font-size: 15px;
+    font-weight: 900;
+}
+.active{
+    display: block;
+}
+.disc{
+    display: grid;
+    grid-gap: 20px;
+    grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
+}
+.disc .eats{
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 40px;
+}
+.disc .eats .icon{
+    font-size: 50px;
+}
+.disc .eats h3{
+    font-size: 15px;
+}
+.disc .eats p{
+    margin-top: 20px;
+    font-size: 15px;
+    color: rgba(0, 0, 0, 0.5);
+}
+.about{
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    padding: 50px;
+    background-color: white;
+}
+.about .about2 button{
+    background-color: #ffc600;
+    padding: 10px 20px;
+    border: none;
+}
+.about .about2 h1,.about .about2 p{
+    font-weight: 900;
+    margin: 20px 0;
+}
+.about .about2 p{
+    font-size: 15px;
+    letter-spacing: -1px;
+}
+.ending{
+    display: grid;
+    grid-gap: 20px;
+}
+.ending div:nth-child(1){
+    display: flex;
+    justify-content: center;
+    font-size: 15px;
+}
+.ending div:nth-child(1)::after{
+    content: "";
+    height: 10px;
+    width: 100%;
+    background: linear-gradient(-90deg,transparent,#ffc600);
+    margin: auto;
+}
+.ending div:nth-child(1)::before{
+    content: "";
+    height: 10px;
+    width: 100%;
+    margin: auto;
+    background: linear-gradient(90deg,transparent,#ffc600);
+}
+.ending div:nth-child(1) h2{
+    margin: 0 20px;
+    min-width: 150px;
+}
+.ending div:nth-child(2){
+    display: grid;
+    grid-gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+@media (max-width:1000px){
+    .nav .main{
+        display: block;
+    }
+    .nav ul{
+        display: grid;
+        margin-top: 60px;
+    }
+}

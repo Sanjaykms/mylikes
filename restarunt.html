@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Website!</title>
+    <link rel="stylesheet" href="restarunt.css">
+</head>
+<body>
+    <div class="wrap">
+        <div class="nav">
+            <div class="main" onclick="funct()">
+                <h6><span id="fun1" style="display: none;">☰</span><span id="fun2">x</span>Menu</h6>
+            </div>
+            <ul>
+                <li><a href="#">tacos</a></li>
+                <li><a href="#">beers</a></li>
+                <li><a href="#">wines</a></li>
+                <li><a href="#">desserts</a></li>
+                <li><a href="#">reservation</a></li>
+            </ul>
+        </div>
+        <div class="info">
+            <div class="one">
+                <h2>Terry's Taco Joint</h2>
+                <h4>Pretty Good Tacos!</h4>
+            </div>
+            <div class="two fea">
+                <h1>$1.99</h1>
+                <h5>Tacos</h5>
+            </div>
+            <div class="thr fea">
+                <h1>$3.99</h1>
+                <h5>Kombucha</h5>
+            </div>
+        </div>
+        <div class="disc">
+            <div class="eats">
+                <span class="icon">🌮</span>
+                <h3>Tacos</h3>
+                <p>Lorem ipsum dolor sit amet,olorem adipisci quia modi architecto maxime ratione! Nam quibusdam alias, possimus dolorem enim laboriosam, nostrum dignissimos vitae delectus nemo culpa natus?</p>
+            </div>
+            <div class="eats">
+                <span class="icon">🍺</span>
+                <h3>Beer</h3>
+                <p>Lorem ipsum dolor sit amet , aspernatur illum totam saepe error ipsa quis sequi, esse quam consequuntur ipsum deserunt, asperiores eligendi quibusdam quidem cum commodi.</p>
+            </div>
+            <div class="eats">
+                <span class="icon">🍷</span>
+                <h3>Wine</h3>
+                <p>Lorem ipsum dolor, sit amet consequatur beatae quod, voluptatem similique quibusdam error? Autem tempore minima esse molestias magni provident! Vel consectetur minus fuga atque voluptas?</p>
+            </div>
+            <div class="eats">
+                <span class="icon">🎵</span>
+                <h3>Music</h3>
+                <p>Lorem ipsum dolor sit, amet consectetur quaerat atque numquam quasi ut, reprehenderit harum, modi reiciendis natus architecto excepturi accusamus id ea? Similique, officia?</p>
+            </div>
+        </div>
+        <div class="about">
+            <div class="about1">
+                <img src="https://jolly-kalam-23776e.netlify.app/restaurantwebsite/images/queso-taco.png">
+            </div>
+            <div class="about2">
+                <h1>Featured Taco</h1>
+                <p>Slim Profile, easy to hold and loaded with cheese.</p>
+                <p>This is the one you have been waiting for</p>
+                <button>Learn More →</button>
+            </div>
+        </div>
+        <div class="ending">
+            <div><h2>Instant Grams</h2></div>
+            <div><img src="https://source.unsplash.com/random/201x201" alt="glass img">
+                <img src="https://source.unsplash.com/random/202x202" alt="biscuit">
+                <img src="https://source.unsplash.com/random/203x203" alt="river">
+                <img src="https://source.unsplash.com/random/204x204" alt="girl">
+                <img src="https://source.unsplash.com/random/205x205" alt="plane">
+                <img src="https://source.unsplash.com/random/206x206" alt="pot">
+                <img src="https://source.unsplash.com/random/207x207" alt="library">
+                <img src="https://source.unsplash.com/random/207x208" alt="stick">
+                <img src="https://source.unsplash.com/random/207x209" alt="forest">
+                <img src="https://source.unsplash.com/random/207x210" alt="cycling"></div>
+        </div>
+    </div>
+</body>
+<script>
+    var n=document.querySelector("#fun1"),m=document.getElementById("fun2"),l=document.querySelector(".nav ul"),o=document.querySelector(".info");
+    function funct(){
+        if(m.style.display=="none"){
+            n.style.display="none";
+            m.style.display="block";
+            l.style.transform="rotateX(0deg)";
+            o.style.marginTop="0";
+            l.style.marginTop="60px";
+        }
+        else{
+            n.style.display="block";
+            m.style.display="none";
+            l.style.transform="rotateX(90deg)";
+            o.style.marginTop="-50px";
+            l.style.marginTop="-10px";
+        }
+    }
+</script>
+</html>
