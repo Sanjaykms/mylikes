@@ -209,4 +209,24 @@ body{
         display: grid;
         margin-top: 60px;
     }
+    .about{
+        flex-direction: column;
+    }
+}
+    @media (max-width:575px){
+    .ending div:nth-child(2){
+        grid-template-columns: auto;
+    }
+    .disc{
+        grid-template-columns: auto;
+    }
+    .info{
+        grid-template-areas:
+        "item1 item1"
+        "item1 item1"
+        "item2 item3";
+    }
+}
+img{
+    width: 100%;
 }
