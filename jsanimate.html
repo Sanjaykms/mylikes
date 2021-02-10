@@ -25,13 +25,17 @@
             background:#333;
             overflow: hidden;
         }
-        #home h1{
+        #home h1,#home h2{
             position: absolute;
-            top: 10px;
-            left: 50%;
+            top: 45px;
+            left: 80%;
             transform: translate(-50%,0);
             z-index: 1000;
-            text-transform: uppercase;
+            text-transform: capitalize;
+        }
+        #home h2{
+            top:45px;
+            left: 25%;
         }
         #home a{
             position: absolute;
@@ -46,13 +50,13 @@
             outline: none;
             border: none;
             color: rgb(20, 20, 20);
-            background-color: rgb(110, 110, 110);
+            background-color: rgb(172, 171, 171);
             text-decoration: none;
             transform: rotate(90deg);
             user-select: none;
         }
         #home a:hover{
-            background-color: rgb(46, 46, 46);
+            background-color: rgb(97, 97, 97);
             color: white;
         }
         #home a:active{
@@ -132,6 +136,9 @@
             #home h1{
                 font-size: 0.9em;
             }
+            #home h2{
+                font-size: 0.7em;
+            }
         }
         .nav{
             position: sticky;
@@ -142,7 +149,7 @@
             display: flex;
             flex-direction: column;
             z-index: 1000;
-            background-color: rgb(148, 146, 146);
+            background-color: rgb(172, 171, 171);
             transition: 0.8s;
         }
         .nav button{
@@ -172,7 +179,7 @@
             transition: 0.5s background-color;
         }
         .nav a:hover,.nav button:hover{
-            background-color: rgb(46, 46, 46);
+            background-color: rgb(97, 97, 97);
             color: white;
         }
         .nav a:active{
@@ -180,10 +187,53 @@
         }
         #profile{
             position: relative;
-            width: 100%;
+            width: 80%;
             height: 100vh;
+            background-color: white;
         }
-        #skills{
+        #profile .container{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            padding: 30px;
+            overflow: hidden;
+        }
+        #profile .container h1{
+            font-size: 2.5em;
+            text-shadow: 5px 2px rgb(167, 167, 167);
+            color: rgb(214, 84, 103);
+        }
+        #profile .container .about{
+            width: 80%;
+            padding: 10px;
+        }
+        #profile .container .about .photo{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+        #profile .container .about .photo p, #profile .container h1{
+            padding: 20px;
+        }
+        #profile .container .about .photo .imgs{
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            border: 5px solid rgb(161, 160, 160);
+            overflow: hidden;
+        }
+        #profile .container .about .photo .imgs img{
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: 1s cubic-bezier(1,0,0,.99);
+        }
+        #profile .container .about .photo .imgs img:hover{
+            transform: scale(2.5);
+        }
+        #abilities{
             position: relative;
             width: 100%;
             height: 100vh;
@@ -193,6 +243,7 @@
 <body>
     <div id="home">
         <h1>have fun!</h1>
+        <h2>intractive resume</h2>
         <div class="cursor">
             <div class="circle"></div>
             <div class="circle"></div>
@@ -249,14 +300,38 @@
         <button type="button"><<</button>
         <a href="#home">home</a>
         <a href="#profile">profile</a>
-        <a href="#skills">skills</a>
+        <a href="#abilities">abilities</a>
         <a href="#projects">projects</a>
         <a href="#contact">contact</a>
     </div>
     <div id="profile">
-        <h1>Sanjay</h1>
+        <div class="container">
+            <h1>Profile</h1>
+            <hr>
+            <div class="about">
+                <div class="photo">
+                    <div class="imgs">
+                        <img src="image4.jpg">
+                    </div>
+                    <p>I am creative web developer</p>
+                </div>
+                <div class="about1">
+                    <h3>about</h3>
+                    <p>I am sanjay , a fullstack developer, with good knowledge in programming and also good with web development. I love to make a stand for quality. Motivation "Give up on your dreams and die - Levi ackerman (Anime AOT)"</p>
+                </div>
+                <div class="details">
+                    <h3>Details</h3>
+                    <h5>Name:</h5>
+                    <p>Sanjay</p>
+                    <h5>Age:</h5>
+                    <p>20</p>
+                    <h5>Location:</h5>
+                    <p>Perundurai, Erode [Dt],Tamil nadu, India, Earth</p>
+                </div>
+            </div>
+        </div>
     </div>
-    <div id="skills">
+    <div id="abilities">
 
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/gsap.min.js"></script>
@@ -275,14 +350,18 @@
             if(e.target.innerHTML=="&lt;&lt;"){
                e.target.innerHTML=">>";
                nav.style.transform="translate(0,0%)";
-               nav.style.top="20%";
             }
             else{
                 e.target.innerHTML="<<";
                nav.style.transform="translate(100%,0%)"; 
-               nav.style.top="20%";
             }
         })
+        var c=document.querySelector(".imgs");
+    var sha="";
+    for(var i=0;1500>i;i++){
+        sha+=(sha?",":" ")+i*1+"px "+i*1+"px 0 rgba(200,200, 200, 0.521)";
+    }
+    c.style.boxShadow=sha;
     </script>
 </body>
 </html>
