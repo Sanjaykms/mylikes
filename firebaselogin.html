@@ -123,39 +123,51 @@ span.psw {
      width: 100%;
   }
 }
+.sign{
+  visibility: hidden;
+  position: absolute;
+}
+.here{
+  background-color: #4CAF50;
+  padding: 5px 7px;
+  color: #fff;
+}
 </style>
 </head>
 <body>
-
-<h2>Modal Login Form</h2>
-<button id="message" onclick="document.getElementById('id01').style.display='block'" style="width:auto;">SIGN IN</button>
-<button id="logout" onclick="out()" style="display: none;">LOGOUT</button>
-
+<div style="display: grid;place-items: center;">
+      <h2>Login Form</h2>
+      <button id="message" onclick="document.getElementById('id01').style.display='block'" style="width:auto;">SIGN IN</button>
+      <button id="logout" onclick="out()" style="display: none;width: auto;">LOGOUT</button>
+</div>
 <div id="id01" class="modal">
   
   <div class="modal-content animate">
     <div class="imgcontainer">
       <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
-      <img src="image2.jpg" alt="Avatar" class="avatar">
+      <img src="https://source.unsplash.com/collection/190727/900x900" alt="Avatar" class="avatar">
     </div>
 
     <div class="container">
       <label for="uname"><b id="nm">Username</b></label>
-      <input type="text" placeholder="Enter Username" name="uname" id="userFire" required>
+      <input type="text" placeholder="Enter E-mail" name="uname" id="userFire" required autofocus>
 
       <label for="psw"><b>Password</b></label>
       <input type="password" placeholder="Enter Password" name="psw" id="passFire" required>
-        
-      <button onclick="login()">Login</button>
+      <div id="confirmPass" style="display: none;">
+        <label for="psw1"><b>Confirm Password</b></label>
+        <input type="password" placeholder="Retype Password" id="repass" name="psw1"  required>
+      </div>
+      <button onclick="login()" id="signlogin">Login</button>
+      <button onclick="signin()" style="display: none;" id="signlogup">SIGN UP</button>
       <label>
-        <input type="checkbox" checked="checked" name="remember"> Remember me
+        <p>Don't have an account Click <b> Here <label class="here">SignUp<input type="radio" name="signup" onclick="dosome(this)" class="sign"></label>
+              <label class="here">LogIn<input type="radio" name="signup" onclick="dosome1(this)" class="sign"><label></b></p>
       </label>
-      <button onclick="signin()">SIGN UP</button>
     </div>
 
     <div class="container" style="background-color:#f1f1f1">
       <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
-      <span class="psw">Forgot <a href="#">password?</a></span>
     </div>
   </div>
 </div>
@@ -210,11 +222,14 @@ firebase.auth().onAuthStateChanged((user) => {
 function login(){
   var userName=document.getElementById("userFire").value;
     var passName=document.getElementById("passFire").value;
-    firebase.auth().signInWithEmailAndPassword(userName, passName)
+      firebase.auth().signInWithEmailAndPassword(userName, passName)
   .then((userCredential) => {
     // Signed in 
     var user = userCredential.user;
-    alert("Created");
+    alert("LOGGED IN");
+    document.getElementById('id01').style.display='none'
+    document.getElementById("userFire").value="";
+    document.getElementById("passFire").value="";
     // ...
   })
   .catch((error) => {
@@ -235,21 +250,40 @@ function out(){
 });
 }
 function signin(){
-  var userName=document.getElementById("userFire").value;
+    var userName=document.getElementById("userFire").value;
     var passName=document.getElementById("passFire").value;
-  firebase.auth().createUserWithEmailAndPassword(userName, passName)
-  .then((userCredential) => {
-    // Signed in 
-    var user = userCredential.user;
-    alert("Created");
-    // ...
-  })
-  .catch((error) => {
-    var errorCode = error.code;
-    var errorMessage = error.message;
-    alert(errorCode+"  "+errorMessage);
-    // ..
-  });
+    if(document.getElementById("repass").value==passName){
+            firebase.auth().createUserWithEmailAndPassword(userName, passName)
+        .then((userCredential) => {
+          // Signed in 
+          var user = userCredential.user;
+          alert("Created and logged in");
+          document.getElementById('id01').style.display='none'
+          document.getElementById("userFire").value="";
+          document.getElementById("passFire").value="";
+          document.getElementById("repass").value="";
+          // ...
+        })
+        .catch((error) => {
+          var errorCode = error.code;
+          var errorMessage = error.message;
+          alert(errorCode+"  "+errorMessage);
+          // ..
+        });
+    }
+    else{
+      alert("Check the Retype Password");
+    }
+}
+function dosome(e){
+  document.getElementById('confirmPass').style.display='block';
+  document.getElementById("signlogup").style.display="block";
+  document.getElementById("signlogin").style.display="none";
+}
+function dosome1(e){
+  document.getElementById('confirmPass').style.display='none';
+  document.getElementById("signlogup").style.display="none";
+  document.getElementById("signlogin").style.display="block";
 }
 </script>
 
